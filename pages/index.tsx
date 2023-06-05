@@ -11,13 +11,13 @@ type IndexPageProps = {};
 type IndexPageRef = React.ForwardedRef<HTMLDivElement>;
 
 function IndexPage(props: IndexPageProps, ref: IndexPageRef) {
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     if (typeof window !== "undefined") {
-  //       window.scrollTo({ top: 0 });
-  //     }
-  //   }, 550);
-  // });
+  useEffect(() => {
+    setTimeout(() => {
+      if (typeof window !== "undefined") {
+        window.scrollTo({ top: 0 });
+      }
+    }, 550);
+  });
 
   return (
     <PageTransition ref={ref}>
