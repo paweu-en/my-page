@@ -30,17 +30,21 @@ function AboutPage() {
         }}
         transition={{ duration: 0.6, ease: "easeInOut", delay: 0.7 }}
         exit={{
-          // x: "-60%",
+          x: "-60%",
           opacity: 0.25,
           transition: { duration: 0.75, ease: [1, 0, 0.5, 1] },
         }}
         className='flex flex-col items-center'>
         <Test />
-        {/* <Test />
         <Test />
         <Test />
         <Test />
-        <Test /> */}
+        <Test />
+        <Test />
+        <Test />
+        <Test />
+        <Test />
+        <Test />
       </motion.div>
       {/* </main> */}
     </PageTransition>
