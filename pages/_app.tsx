@@ -23,12 +23,14 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <SmoothScroll />
       <Navbar />
+      {/* <div className='relative'> */}
       <AnimatePresence
         onExitComplete={onExitComplete}
         mode='sync'
         initial={false}>
         <Component key={pageKey} {...pageProps} />
       </AnimatePresence>
+      {/* </div> */}
     </>
   );
 }

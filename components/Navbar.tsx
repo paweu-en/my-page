@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
   const path = usePathname();
 
   return (
-    <div className='text-sm xl:text-base fixed w-full h-[100px] p-6 bg-transparent mix-blend-difference flex justify-between items-center z-10'>
+    <motion.div className='text-sm xl:text-base fixed w-full h-[100px] p-6 bg-transparent mix-blend-difference flex justify-between items-center z-10'>
       <h1 className='text-white'>Paweł Naradowski</h1>
       <nav>
         <Link
@@ -28,7 +29,7 @@ const Navbar = () => {
           About
         </Link>
       </nav>
-    </div>
+    </motion.div>
   );
 };
 export default Navbar;
