@@ -1,13 +1,18 @@
+"use client";
+
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import PageTransition from "@/components/PageTransition3";
 // import { forwardRef, useEffect } from "react";
 import Test from "@/components/Test";
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 // const inter = Inter({ subsets: ["latin"] });
 
 function IndexPage() {
+  const path = usePathname();
+
   // useEffect(() => {
   //   setTimeout(() => {
   //     if (typeof window !== "undefined") {
@@ -18,7 +23,6 @@ function IndexPage() {
 
   return (
     <PageTransition bgColor='bg-black' textColor='text-white'>
-      <h1>Index Page!</h1>
       <motion.div
         initial={{
           // y: "25%",
@@ -34,7 +38,9 @@ function IndexPage() {
           opacity: 0.25,
           transition: { duration: 0.75, ease: [1, 0, 0.5, 1] },
         }}
-        className='flex flex-col items-center'>
+        className={`flex flex-col items-center`}>
+        <h1>Index Page!</h1>
+
         <Test />
         <Test />
         <Test />

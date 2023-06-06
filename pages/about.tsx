@@ -1,7 +1,9 @@
+"use client";
+
 import PageTransition from "@/components/PageTransition3";
 import Test from "@/components/Test";
 import { forwardRef, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, useIsPresent } from "framer-motion";
 
 // type IndexPageProps = {};
 // type IndexPageRef = React.ForwardedRef<HTMLDivElement>;
@@ -15,10 +17,14 @@ function AboutPage() {
   //   }, 550);
   // });
 
+  const isPresent = useIsPresent();
+
+  useEffect(() => {
+    !isPresent && console.log("I've been removed!");
+  }, [isPresent]);
+
   return (
     <PageTransition bgColor='bg-white' textColor='text-black'>
-      {/* <main className=''> */}
-      <h1>About Page!</h1>
       <motion.div
         initial={{
           opacity: 0,
@@ -35,6 +41,8 @@ function AboutPage() {
           transition: { duration: 0.75, ease: [1, 0, 0.5, 1] },
         }}
         className='flex flex-col items-center'>
+        <h1>About Page!</h1>
+
         <Test />
         <Test />
         <Test />
@@ -46,7 +54,6 @@ function AboutPage() {
         <Test />
         <Test />
       </motion.div>
-      {/* </main> */}
     </PageTransition>
   );
 }

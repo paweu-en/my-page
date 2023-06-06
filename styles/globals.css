@@ -16,11 +16,15 @@
   }
 }
 
-/* html,
+html,
 body,
 #__next {
   width: 100%;
-} */
+}
+
+body {
+  background-color: black;
+}
 
 /* #__next {
   position: relative;

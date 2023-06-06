@@ -1,6 +1,8 @@
-import React, { ReactNode, forwardRef } from "react";
-import { motion, HTMLMotionProps } from "framer-motion";
-import { useRouter } from "next/router";
+"use client";
+
+import React, { ReactNode, forwardRef, useEffect } from "react";
+import { motion, HTMLMotionProps, useIsPresent } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 type PageTransitionTypes = {
   children: ReactNode;
@@ -15,23 +17,40 @@ function PageTransition({ children, bgColor, textColor }: PageTransitionTypes) {
   // const fadeOut = { opacity: 0.5, x: "-30%" };
 
   const transition = { duration: 0.75, ease: [1, 0, 0.5, 1] };
-  // const transition = { duration: 15, ease: [1, 0, 0.5, 1] };
+  // const transition = { duration: 5, ease: [1, 0, 0.5, 1] };
 
-  const path = useRouter().asPath;
+  const path = usePathname();
   console.log("🚀 ~ file: PageTransition.tsx:19 ~ path:", path);
 
+  const isPresent = useIsPresent();
+
+  useEffect(() => {
+    isPresent && console.log("I've been removed!");
+  }, [isPresent]);
+
+  const startAnimation = () => {
+    console.log("start!");
+    document
+      .querySelector("main > div:nth-child(2n)")
+      ?.setAttribute(
+        "style",
+        "position: absolute; top: 0; left: 0; width: 100%"
+      );
+  };
+
   return (
-    <motion.main
+    <motion.div
       // ref={ref}
       initial={path === "/" ? onTheLeft : onTheRight}
       animate={inTheCenter}
       exit={path === "/" ? onTheRight : onTheLeft}
       transition={transition}
-      className={`absolute w-full pt-[100px] px-6 ${bgColor} ${textColor}`}
+      onAnimationStart={startAnimation}
+      className={`relative pt-[100px] px-6 ${bgColor} ${textColor}`}
       // {...rest}>
     >
       {children}
-    </motion.main>
+    </motion.div>
   );
 }
 
