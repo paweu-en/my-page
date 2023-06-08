@@ -5,8 +5,9 @@ import { Inter } from "next/font/google";
 import PageTransition from "@/components/PageTransition3";
 // import { forwardRef, useEffect } from "react";
 import Test from "@/components/Test";
-import { motion } from "framer-motion";
+import { motion, useIsPresent } from "framer-motion";
 import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -21,6 +22,12 @@ function IndexPage() {
   //   }, 550);
   // });
 
+  const isPresent = useIsPresent();
+
+  useEffect(() => {
+    console.log("🚀 ~ file: index.tsx:26 ~ IndexPage ~ isPresent:", isPresent);
+  }, [isPresent]);
+
   return (
     <PageTransition bgColor='bg-black' textColor='text-white'>
       <motion.div
@@ -34,8 +41,8 @@ function IndexPage() {
         }}
         transition={{ duration: 0.6, ease: "easeInOut", delay: 0.7 }}
         exit={{
-          x: "60%",
-          opacity: 0.25,
+          // x: "-50%",
+          opacity: 0,
           transition: { duration: 0.75, ease: [1, 0, 0.5, 1] },
         }}
         className={`flex flex-col items-center`}>

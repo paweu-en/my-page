@@ -20,7 +20,7 @@ function AboutPage() {
   const isPresent = useIsPresent();
 
   useEffect(() => {
-    !isPresent && console.log("I've been removed!");
+    console.log("🚀 ~ file: about.tsx:21 ~ AboutPage ~ isPresent:", isPresent);
   }, [isPresent]);
 
   return (
@@ -36,8 +36,8 @@ function AboutPage() {
         }}
         transition={{ duration: 0.6, ease: "easeInOut", delay: 0.7 }}
         exit={{
-          x: "-60%",
-          opacity: 0.25,
+          // x: "-60%",
+          opacity: 0,
           transition: { duration: 0.75, ease: [1, 0, 0.5, 1] },
         }}
         className='flex flex-col items-center'>

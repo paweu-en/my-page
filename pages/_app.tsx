@@ -14,7 +14,7 @@ const onExitComplete = () => {
   console.log("koniec exitu");
   setTimeout(() => {
     document.querySelector("main div")?.removeAttribute("style");
-  }, 100);
+  }, 10);
   // setTimeout(() => {
   //   window.scrollTo({ top: 0 });
   // }, 2750);
@@ -29,9 +29,9 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <SmoothScroll />
       <Navbar />
-      <main className='relative w-full'>
+      <main className='relative'>
         <AnimatePresence
-          onExitComplete={onExitComplete}
+          // onExitComplete={onExitComplete}
           mode='sync'
           initial={false}>
           <Component key={pageKey} {...pageProps} />
