@@ -14,13 +14,13 @@ import { useEffect } from "react";
 function IndexPage() {
   const path = usePathname();
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     if (typeof window !== "undefined") {
-  //       window.scrollTo({ top: 0 });
-  //     }
-  //   }, 550);
-  // });
+  useEffect(() => {
+    setTimeout(() => {
+      if (typeof window !== "undefined") {
+        window.scrollTo({ top: 0 });
+      }
+    }, 550);
+  });
 
   const isPresent = useIsPresent();
 
@@ -41,8 +41,8 @@ function IndexPage() {
         }}
         transition={{ duration: 0.6, ease: "easeInOut", delay: 0.7 }}
         exit={{
-          // x: "-50%",
-          opacity: 0,
+          x: "-25%",
+          opacity: 0.2,
           transition: { duration: 0.75, ease: [1, 0, 0.5, 1] },
         }}
         className={`flex flex-col items-center`}>
