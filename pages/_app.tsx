@@ -29,7 +29,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <SmoothScroll />
       <Navbar />
-      <main className='relative'>
+      <main className='relative overflow-x-hidden'>
         <AnimatePresence
           // onExitComplete={onExitComplete}
           mode='sync'

@@ -32,7 +32,7 @@ function PageTransition({ children, bgColor, textColor }: PageTransitionTypes) {
   const aboutExit = { x: "100%" };
 
   const transition = { duration: 0.75, ease: [1, 0, 0.5, 1] };
-  // const transition = { duration: 5, ease: [1, 0, 0.5, 1] };
+  // const transition = { duration: 15, ease: [1, 0, 0.5, 1] };
 
   const path = usePathname();
   console.log("🚀 ~ file: PageTransition.tsx:19 ~ path:", path);
@@ -67,19 +67,22 @@ function PageTransition({ children, bgColor, textColor }: PageTransitionTypes) {
 
   const completeAnimation = () => {
     console.log("complete");
-    document
-      .querySelector("main div:nth-last-child(2)")
-      ?.removeAttribute("style");
+    setTimeout(() => {
+      document
+        .querySelector("main div:nth-last-child(1)")
+        ?.removeAttribute("style");
+    }, 50);
   };
 
   return (
     <motion.div
       // ref={ref}
-      initial={path === "/" ? undefined : aboutInitial}
-      animate={path === "/" ? undefined : aboutAnimate}
-      exit={path === "/" ? aboutExit : indexAnimate}
+      initial={path === "/about" && aboutInitial}
+      animate={path === "/about" && aboutAnimate}
+      exit={path === "/about" ? indexAnimate : aboutExit}
       transition={transition}
       onAnimationStart={startAnimation}
+      onAnimationComplete={completeAnimation}
       // onAnimationComplete={completeAnimation}
       className={`relative pt-[100px] px-6 ${bgColor} ${textColor}`}
       // className={`absolute w-full top-0 left-0 ${
