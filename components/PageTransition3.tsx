@@ -71,7 +71,7 @@ function PageTransition({ children, bgColor, textColor }: PageTransitionTypes) {
       document
         .querySelector("main div:nth-last-child(1)")
         ?.removeAttribute("style");
-    }, 50);
+    }, 30);
   };
 
   return (
@@ -82,8 +82,8 @@ function PageTransition({ children, bgColor, textColor }: PageTransitionTypes) {
       exit={path === "/about" ? indexAnimate : aboutExit}
       transition={transition}
       onAnimationStart={startAnimation}
-      onAnimationComplete={completeAnimation}
       // onAnimationComplete={completeAnimation}
+      onAnimationComplete={completeAnimation}
       className={`relative pt-[100px] px-6 ${bgColor} ${textColor}`}
       // className={`absolute w-full top-0 left-0 ${
       //   path === "/" ? "-1" : "-1"
