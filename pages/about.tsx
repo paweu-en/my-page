@@ -2,26 +2,15 @@
 
 import PageTransition from "@/components/PageTransition3";
 import Test from "@/components/Test";
-import { forwardRef, useEffect } from "react";
-import { motion, useIsPresent } from "framer-motion";
+import { useEffect } from "react";
+import { motion } from "framer-motion";
+import scrollToTop from "@/hooks/scrollToTop";
 
 // type IndexPageProps = {};
 // type IndexPageRef = React.ForwardedRef<HTMLDivElement>;
 
 function AboutPage() {
-  useEffect(() => {
-    setTimeout(() => {
-      if (typeof window !== "undefined") {
-        window.scrollTo({ top: 0 });
-      }
-    }, 550);
-  });
-
-  const isPresent = useIsPresent();
-
-  useEffect(() => {
-    console.log("🚀 ~ file: about.tsx:21 ~ AboutPage ~ isPresent:", isPresent);
-  }, [isPresent]);
+  scrollToTop();
 
   return (
     <PageTransition bgColor='bg-white' textColor='text-black'>
@@ -34,11 +23,11 @@ function AboutPage() {
           opacity: 1,
           // y: 0
         }}
-        transition={{ duration: 0.6, ease: "easeInOut", delay: 0.7 }}
+        transition={{ duration: 0.6, ease: "easeInOut", delay: 0.85 }}
         exit={{
-          // x: "-60%",
-          opacity: 0.2,
-          transition: { duration: 0.75, ease: [1, 0, 0.5, 1] },
+          // x: "20%",
+          opacity: 0,
+          transition: { duration: 0.75, ease: [1, 0, 0.8, 0.8] },
         }}
         className='flex flex-col items-center'>
         <h1>About Page!</h1>

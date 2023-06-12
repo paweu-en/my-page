@@ -1,8 +1,9 @@
 "use client";
 
-import React, { ReactNode, forwardRef, useEffect } from "react";
+import React, { ReactNode, forwardRef, useEffect, useState } from "react";
 import { motion, HTMLMotionProps, useIsPresent } from "framer-motion";
 import { usePathname } from "next/navigation";
+import { useIntro } from "@/contexts/IntroContext";
 
 type PageTransitionTypes = {
   children: ReactNode;
@@ -11,6 +12,7 @@ type PageTransitionTypes = {
 };
 
 function PageTransition({ children, bgColor, textColor }: PageTransitionTypes) {
+  // const [firstRun, setFirstRun] = useState<boolean>(true);
   // const onTheRight = { x: "100%" };
   // const inTheCenter = { x: 0 };
   // const onTheLeft = { x: "-100%" };
@@ -21,21 +23,21 @@ function PageTransition({ children, bgColor, textColor }: PageTransitionTypes) {
     // x: 0,
     // opacity: 1,
   };
-  const indexExit = {
-    // x: "",
-    opacity: 0,
-    transition: { duration: 0.75, ease: [1, 0, 0.5, 1] },
-  };
+  // const indexExit = {
+  //   // x: "",
+  //   opacity: 0,
+  //   transition: { duration: 0.75, ease: [1, 0, 0.9, 1] },
+  // };
 
   const aboutInitial = { x: "100%" };
   const aboutAnimate = { x: 0 };
   const aboutExit = { x: "100%" };
 
-  const transition = { duration: 0.75, ease: [1, 0, 0.5, 1] };
+  const transition = { duration: 0.75, ease: [1, 0, 0.8, 0.8] };
   // const transition = { duration: 15, ease: [1, 0, 0.5, 1] };
 
   const path = usePathname();
-  console.log("🚀 ~ file: PageTransition.tsx:19 ~ path:", path);
+  // console.log("🚀 ~ file: PageTransition.tsx:19 ~ path:", path);
 
   // const isPresent = useIsPresent();
 
@@ -43,9 +45,22 @@ function PageTransition({ children, bgColor, textColor }: PageTransitionTypes) {
   //   isPresent && console.log("I've been removed!");
   // }, [isPresent]);
 
-  const startAnimation = () => {
-    console.log("start!");
+  // const introAnimation = () => {
+  //   if (path === "/") return ()
+  //   else return
+  // }
 
+  // const introInitial = {
+  //   y: "25%",
+  //   opacity: 0,
+  // };
+  // const introAnimate = {
+  //   y: 0,
+  //   opacity: 1,
+  // };
+
+  const startAnimation = () => {
+    // console.log("start!");
     if (path === "/") {
       document
         .querySelector("main > div:nth-child(2n)")
@@ -63,22 +78,32 @@ function PageTransition({ children, bgColor, textColor }: PageTransitionTypes) {
           "position: absolute; top: 0; left: 0; width: 100%; z-index: 1"
         );
     }
+    // console.log("zmieniony firstRun", firstRun);
+    // setTimeout(() => {
+    //   setFirstRun(false);
+    // }, 3000);
   };
 
   const completeAnimation = () => {
-    console.log("complete");
+    // console.log("complete");
     setTimeout(() => {
       document
         .querySelector("main div:nth-last-child(1)")
         ?.removeAttribute("style");
-    }, 30);
+    }, 20);
   };
+
+  const intro = useIntro();
 
   return (
     <motion.div
       // ref={ref}
-      initial={path === "/about" && aboutInitial}
-      animate={path === "/about" && aboutAnimate}
+      // initial={path === "/about" && aboutInitial}
+      // animate={path === "/about" && aboutAnimate}
+      // exit={path === "/about" ? indexAnimate : aboutExit}
+
+      initial={!intro && path === "/about" && aboutInitial}
+      animate={!intro && path === "/about" && aboutAnimate}
       exit={path === "/about" ? indexAnimate : aboutExit}
       transition={transition}
       onAnimationStart={startAnimation}

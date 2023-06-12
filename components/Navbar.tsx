@@ -7,7 +7,11 @@ const Navbar = () => {
   const path = usePathname();
 
   return (
-    <motion.div className='text-sm xl:text-base fixed w-full h-[100px] p-6 bg-transparent mix-blend-difference flex justify-between items-center z-20'>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1, delay: 0.2, ease: "easeInOut" }}
+      className='text-sm xl:text-base fixed w-full h-[100px] p-6 bg-transparent mix-blend-difference flex justify-between items-center z-20'>
       <h1 className='text-white'>Paweł Naradowski</h1>
       <nav>
         <Link

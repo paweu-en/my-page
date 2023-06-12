@@ -3,47 +3,33 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import PageTransition from "@/components/PageTransition3";
-// import { forwardRef, useEffect } from "react";
 import Test from "@/components/Test";
-import { motion, useIsPresent } from "framer-motion";
+import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
+import scrollToTop from "@/hooks/scrollToTop";
 
 // const inter = Inter({ subsets: ["latin"] });
 
 function IndexPage() {
-  const path = usePathname();
-
-  useEffect(() => {
-    setTimeout(() => {
-      if (typeof window !== "undefined") {
-        window.scrollTo({ top: 0 });
-      }
-    }, 550);
-  });
-
-  const isPresent = useIsPresent();
-
-  useEffect(() => {
-    console.log("🚀 ~ file: index.tsx:26 ~ IndexPage ~ isPresent:", isPresent);
-  }, [isPresent]);
+  scrollToTop();
 
   return (
     <PageTransition bgColor='bg-black' textColor='text-white'>
       <motion.div
         initial={{
-          // y: "25%",
+          y: "2%",
           opacity: 0,
         }}
         animate={{
-          // y: 0,
+          y: 0,
           opacity: 1,
         }}
-        transition={{ duration: 0.6, ease: "easeInOut", delay: 0.7 }}
+        transition={{ duration: 0.6, ease: "easeInOut", delay: 0.85 }}
         exit={{
-          x: "-25%",
+          x: "-35%",
           opacity: 0.2,
-          transition: { duration: 0.75, ease: [1, 0, 0.5, 1] },
+          transition: { duration: 0.75, ease: [1, 0, 0.8, 0.8] },
         }}
         className={`flex flex-col items-center`}>
         <h1>Index Page!</h1>
