@@ -30,6 +30,19 @@ export default function App({ Component, pageProps }: AppProps) {
   const [theme, setTheme] = useState<boolean>(true);
 
   useEffect(() => {
+    const themeElement = document.createElement("meta");
+    themeElement.setAttribute("name", "theme-color");
+    document.head.append(themeElement);
+    console.log("meta theme color dodane!");
+  }, []);
+
+  useEffect(() => {
+    const themeContent = document.querySelector("meta[name=theme-color]");
+    if (theme) themeContent?.setAttribute("content", "#000");
+    else themeContent?.setAttribute("content", "#fff");
+  });
+
+  useEffect(() => {
     if (theme)
       document.documentElement.setAttribute(
         "style",
