@@ -86,11 +86,12 @@ function PageTransition({ children, bgColor, textColor }: PageTransitionTypes) {
 
   const completeAnimation = () => {
     // console.log("complete");
+    // document.querySelector("main div")?.removeAttribute("style");
     setTimeout(() => {
       document
         .querySelector("main div:nth-last-child(1)")
         ?.removeAttribute("style");
-    }, 20);
+    }, 21);
   };
 
   const intro = useIntro();

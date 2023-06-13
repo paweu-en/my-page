@@ -8,10 +8,11 @@ import { AnimatePresence, useIsPresent } from "framer-motion";
 import Layout from "@/public/Layout";
 import Navbar from "@/components/Navbar";
 import SmoothScroll from "@/lib/SmoothScroll";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { IntroProvider } from "@/contexts/IntroContext";
 import PageTransition from "@/components/PageTransition3";
 import { usePathname } from "next/navigation";
+import BodyColorSwitch from "@/components/BodyColorSwitch";
 
 // const onExitComplete = () => {
 //   console.log("koniec exitu");
@@ -25,7 +26,21 @@ import { usePathname } from "next/navigation";
 
 export default function App({ Component, pageProps }: AppProps) {
   const path = usePathname();
-  // console.log(router);
+
+  const [theme, setTheme] = useState<boolean>(true);
+
+  useEffect(() => {
+    if (theme)
+      document.documentElement.setAttribute(
+        "style",
+        "--bg-color: black; --text-color: white"
+      );
+    else
+      document.documentElement.setAttribute(
+        "style",
+        "--bg-color: white; --text-color: black"
+      );
+  });
 
   return (
     <>
@@ -42,6 +57,7 @@ export default function App({ Component, pageProps }: AppProps) {
           </AnimatePresence>
         </IntroProvider>
       </main>
+      <BodyColorSwitch theme={theme} setTheme={setTheme} />
     </>
   );
 }
