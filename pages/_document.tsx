@@ -15,7 +15,7 @@ export default function Document() {
   return (
     <Html lang='en'>
       <Head />
-      <body>
+      <body className='background-color: var(--bg-color); color: var(--text-color)'>
         <Main />
         <NextScript />
       </body>
