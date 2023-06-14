@@ -46,12 +46,12 @@ export default function App({ Component, pageProps }: AppProps) {
     if (theme)
       document.documentElement.setAttribute(
         "style",
-        "--bg-color: black; --text-color: white"
+        "--bg-color: #000; --text-color: #fff"
       );
     else
       document.documentElement.setAttribute(
         "style",
-        "--bg-color: white; --text-color: black"
+        "--bg-color: #fff; --text-color: #000"
       );
   });
 
