@@ -1,5 +1,3 @@
-"use client";
-
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { AnimatePresence } from "framer-motion";
@@ -34,7 +32,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     const themeContent = document.querySelector("meta[name=theme-color]");
-    if (theme) themeContent?.setAttribute("content", "#000");
+    if (path === "/") themeContent?.setAttribute("content", "#000");
     else themeContent?.setAttribute("content", "#fff");
   });
 
