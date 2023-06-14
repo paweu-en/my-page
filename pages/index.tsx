@@ -2,11 +2,9 @@
 
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import PageTransition from "@/components/PageTransition3";
+import PageTransition from "@/components/PageTransition";
 import Test from "@/components/Test";
 import { motion } from "framer-motion";
-import { usePathname } from "next/navigation";
-import { useEffect } from "react";
 import scrollToTop from "@/hooks/scrollToTop";
 
 // const inter = Inter({ subsets: ["latin"] });

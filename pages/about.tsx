@@ -1,8 +1,7 @@
 "use client";
 
-import PageTransition from "@/components/PageTransition3";
+import PageTransition from "@/components/PageTransition";
 import Test from "@/components/Test";
-import { useEffect } from "react";
 import { motion } from "framer-motion";
 import scrollToTop from "@/hooks/scrollToTop";
 

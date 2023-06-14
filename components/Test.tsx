@@ -7,7 +7,7 @@ const Test = () => {
       // animate={{ opacity: 1 }}
       // transition={{ delay: 0.8, duration: 1 }}
       className='w-[20vw] h-[20vw] bg-red-500 my-3'>
-      8
+      9
     </motion.div>
   );
 };

@@ -27,7 +27,7 @@ export const IntroProvider = ({ children }: IntroProviderType) => {
       //   "🚀 ~ file: IntroContext.tsx:13 ~ IntroProvider ~ intro:",
       //   intro
       // );
-    }, 1000);
+    }, 1500);
 
     return () => {
       clearTimeout(timeout);

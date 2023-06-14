@@ -2,15 +2,11 @@
 
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import { useRouter } from "next/router";
-import { AnimatePresence, useIsPresent } from "framer-motion";
-// import Navbar from "@/components/Navbar";
-import Layout from "@/public/Layout";
+import { AnimatePresence } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import SmoothScroll from "@/lib/SmoothScroll";
 import { useEffect, useState } from "react";
 import { IntroProvider } from "@/contexts/IntroContext";
-import PageTransition from "@/components/PageTransition3";
 import { usePathname } from "next/navigation";
 import BodyColorSwitch from "@/components/BodyColorSwitch";
 
