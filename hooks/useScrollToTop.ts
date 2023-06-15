@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export default function scrollToTop() {
+export default function useScrollToTop() {
   useEffect(() => {
     const timeout = setTimeout(() => {
       // if (typeof window !== "undefined") {

@@ -1,15 +1,13 @@
-"use client";
-
 import PageTransition from "@/components/PageTransition";
 import Test from "@/components/Test";
 import { motion } from "framer-motion";
-import scrollToTop from "@/hooks/scrollToTop";
+import useScrollToTop from "@/hooks/useScrollToTop";
 
 // type IndexPageProps = {};
 // type IndexPageRef = React.ForwardedRef<HTMLDivElement>;
 
 function AboutPage() {
-  scrollToTop();
+  useScrollToTop();
 
   return (
     <PageTransition bgColor='bg-white' textColor='text-black'>

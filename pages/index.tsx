@@ -1,16 +1,14 @@
-"use client";
-
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import PageTransition from "@/components/PageTransition";
 import Test from "@/components/Test";
 import { motion } from "framer-motion";
-import scrollToTop from "@/hooks/scrollToTop";
+import useScrollToTop from "@/hooks/useScrollToTop";
 
 // const inter = Inter({ subsets: ["latin"] });
 
 function IndexPage() {
-  scrollToTop();
+  useScrollToTop();
 
   return (
     <PageTransition bgColor='bg-black' textColor='text-white'>
