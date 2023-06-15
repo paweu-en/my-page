@@ -6,8 +6,8 @@ const Test = () => {
       // initial={{ opacity: 0 }}
       // animate={{ opacity: 1 }}
       // transition={{ delay: 0.8, duration: 1 }}
-      className='w-[20vw] h-[20vw] bg-red-500 my-3'>
-      9
+      className='w-[20vw] h-[20vw] bg-red-500 my-3 flex justify-center items-center '>
+      10
     </motion.div>
   );
 };

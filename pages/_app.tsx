@@ -53,7 +53,7 @@ export default function App({ Component, pageProps }: AppProps) {
           </AnimatePresence>
         </IntroProvider>
       </main>
-      <BodyColorSwitch theme={theme} setTheme={setTheme} />
+      {/* <BodyColorSwitch theme={theme} setTheme={setTheme} /> */}
     </>
   );
 }

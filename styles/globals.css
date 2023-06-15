@@ -13,7 +13,7 @@
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
-    --bg-color: #000000;
+    /* --bg-color: #000000; */
     /* --text-color: #ffffff; */
   }
 }
@@ -23,6 +23,16 @@ body,
 #__next {
   width: 100%;
 } */
+
+/* SCROLLBAR --------------- */
+html {
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+  width: 0;
+}
+/* SCROLLBAR --------------- */
 
 body {
   background-color: var(--bg-color);
