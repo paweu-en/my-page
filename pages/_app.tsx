@@ -8,6 +8,7 @@ import { IntroProvider } from "@/contexts/IntroContext";
 import { usePathname } from "next/navigation";
 import BodyColorSwitch from "@/components/BodyColorSwitch";
 import { Inter } from "next/font/google";
+import Version from "@/components/Version";
 
 // const inter100 = Inter({ subsets: ["latin"], weight: "100" });
 // const inter200 = Inter({ subsets: ["latin"], weight: "200" });
@@ -64,6 +65,7 @@ export default function App({ Component, pageProps }: AppProps) {
           </AnimatePresence>
         </IntroProvider>
       </main>
+      <Version />
       {/* <BodyColorSwitch theme={theme} setTheme={setTheme} /> */}
     </>
   );
