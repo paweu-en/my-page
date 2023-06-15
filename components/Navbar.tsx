@@ -3,7 +3,11 @@ import { useRouter } from "next/router";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 
-const Navbar = () => {
+type NavbarTypes = {
+  font: string;
+};
+
+const Navbar = ({ font }: NavbarTypes) => {
   const path = usePathname();
 
   return (
@@ -11,7 +15,7 @@ const Navbar = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6, delay: 0.35, ease: "easeInOut" }}
-      className='text-sm xl:text-base fixed w-full h-[100px] p-6 bg-transparent mix-blend-difference flex justify-between items-center z-20'>
+      className={`${font} text-sm xl:text-base fixed w-full h-[100px] p-6 bg-transparent mix-blend-difference flex justify-between items-center z-20`}>
       <h1 className='text-white'>Paweł Naradowski</h1>
       <nav>
         <Link
