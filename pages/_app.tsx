@@ -21,21 +21,21 @@ export default function App({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     const themeContent = document.querySelector("meta[name=theme-color]");
-    if (path === "/") themeContent?.setAttribute("content", "#000");
-    else themeContent?.setAttribute("content", "#fff");
-
-    if (theme)
+    if (path === "/") {
+      themeContent?.setAttribute("content", "#000");
       document.documentElement.setAttribute(
         "style",
-        "--bg-color: #000"
-        // "--bg-color: #000; --text-color: #fff"
+        // "--bg-color: #000"
+        "--bg-color: #000; --text-color: #fff"
       );
-    else
+    } else {
+      themeContent?.setAttribute("content", "#fff");
       document.documentElement.setAttribute(
         "style",
-        "--bg-color: #fff"
-        // "--bg-color: #fff; --text-color: #000"
+        // "--bg-color: #fff"
+        "--bg-color: #fff; --text-color: #000"
       );
+    }
   });
 
   return (
