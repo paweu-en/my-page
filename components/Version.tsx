@@ -1,4 +1,8 @@
 const Version = () => {
-  return <div className='fixed text-xs bottom-5 right-5'>v10</div>;
+  return (
+    <div className='fixed z-10 text-xs text-white bottom-5 right-5 mix-blend-difference'>
+      v10
+    </div>
+  );
 };
 export default Version;
