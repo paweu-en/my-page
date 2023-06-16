@@ -25,28 +25,28 @@ export default function App({ Component, pageProps }: AppProps) {
 
   const [theme, setTheme] = useState<boolean>(true);
 
-  useEffect(() => {
-    const themeElement = document.createElement("meta");
-    themeElement.setAttribute("name", "theme-color");
-    document.head.append(themeElement);
-  }, []);
+  // useEffect(() => {
+  //   const themeElement = document.createElement("meta");
+  //   themeElement.setAttribute("name", "theme-color");
+  //   document.head.append(themeElement);
+  // }, []);
 
   useEffect(() => {
     const themeContent = document.querySelector("meta[name=theme-color]");
     if (path === "/") {
-      themeContent?.setAttribute("content", "#000");
-      document.documentElement.setAttribute(
-        "style",
-        // "--bg-color: #000"
-        "--bg-color: #000; --text-color: #fff"
-      );
+      // themeContent?.setAttribute("content", "#000");
+      // document.documentElement.setAttribute(
+      //   "style",
+      //   // "--bg-color: #000"
+      //   "--bg-color: #000; --text-color: #fff"
+      // );
     } else {
-      themeContent?.setAttribute("content", "#fff");
-      document.documentElement.setAttribute(
-        "style",
-        // "--bg-color: #fff"
-        "--bg-color: #fff; --text-color: #000"
-      );
+      // themeContent?.setAttribute("content", "#fff");
+      // document.documentElement.setAttribute(
+      //   "style",
+      //   // "--bg-color: #fff"
+      //   "--bg-color: #fff; --text-color: #000"
+      // );
     }
   });
 
