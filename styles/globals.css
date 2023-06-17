@@ -13,16 +13,8 @@
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
-    /* --bg-color: #000000; */
-    /* --text-color: #ffffff; */
   }
 }
-
-/* html,
-body,
-#__next {
-  width: 100%;
-} */
 
 /* SCROLLBAR --------------- */
 html {
@@ -36,24 +28,4 @@ body::-webkit-scrollbar {
 
 body {
   background-color: var(--bg-color);
-  color: var(--text-color);
 }
-
-/* #__next {
-  position: relative;
-} */
-
-/* html {
-  min-height: 100%;
-  overflow-x: hidden;
-} */
-
-/* body { */
-/* color: rgb(var(--foreground-rgb)); */
-/* background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb)); */
-/* } */

@@ -9,6 +9,7 @@ import { usePathname } from "next/navigation";
 import BodyColorSwitch from "@/components/BodyColorSwitch";
 import { Inter } from "next/font/google";
 import Version from "@/components/Version";
+import { time } from "console";
 
 // const inter100 = Inter({ subsets: ["latin"], weight: "100" });
 // const inter200 = Inter({ subsets: ["latin"], weight: "200" });
@@ -23,30 +24,11 @@ const inter400 = Inter({ subsets: ["latin"], weight: "400" });
 export default function App({ Component, pageProps }: AppProps) {
   const path = usePathname();
 
-  const [theme, setTheme] = useState<boolean>(true);
-
-  // useEffect(() => {
-  //   const themeElement = document.createElement("meta");
-  //   themeElement.setAttribute("name", "theme-color");
-  //   document.head.append(themeElement);
-  // }, []);
-
   useEffect(() => {
-    const themeContent = document.querySelector("meta[name=theme-color]");
     if (path === "/") {
-      // themeContent?.setAttribute("content", "#000");
-      // document.documentElement.setAttribute(
-      //   "style",
-      //   // "--bg-color: #000"
-      //   "--bg-color: #000; --text-color: #fff"
-      // );
-    } else {
-      // themeContent?.setAttribute("content", "#fff");
-      // document.documentElement.setAttribute(
-      //   "style",
-      //   // "--bg-color: #fff"
-      //   "--bg-color: #fff; --text-color: #000"
-      // );
+      document.documentElement.setAttribute("style", "--bg-color: #000");
+    } else if (path === "/about") {
+      document.documentElement.setAttribute("style", "--bg-color: #fff");
     }
   });
 

@@ -28,6 +28,13 @@ function PageTransition({ children, bgColor, textColor }: PageTransitionTypes) {
   const startAnimation = () => {
     const currentPage = pageRef.current?.parentElement?.children[1];
 
+    pageRef.current?.parentElement?.children[0].classList.remove(
+      "!bg-transparent"
+    );
+    pageRef.current?.parentElement?.children[1]?.classList.remove(
+      "!bg-transparent"
+    );
+
     if (path === "/") {
       currentPage?.setAttribute("style", indexPageAnimationStyles);
     } else {
@@ -36,6 +43,13 @@ function PageTransition({ children, bgColor, textColor }: PageTransitionTypes) {
   };
 
   const completeAnimation = () => {
+    pageRef.current?.parentElement?.children[0].classList.add(
+      "!bg-transparent"
+    );
+    pageRef.current?.parentElement?.children[1]?.classList.add(
+      "!bg-transparent"
+    );
+
     const currentPage = pageRef.current?.parentElement?.lastElementChild;
     setTimeout(() => currentPage?.removeAttribute("style"), 21);
   };
@@ -49,7 +63,7 @@ function PageTransition({ children, bgColor, textColor }: PageTransitionTypes) {
       transition={transition}
       onAnimationStart={startAnimation}
       onAnimationComplete={completeAnimation}
-      className={`relative pt-[100px] px-6 ${bgColor} ${textColor}`}>
+      className={`relative pt-[100px] px-6 ${bgColor} ${textColor} !bg-transparent`}>
       {children}
     </motion.div>
   );
