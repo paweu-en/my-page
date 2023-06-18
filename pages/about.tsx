@@ -2,12 +2,18 @@ import PageTransition from "@/components/PageTransition";
 import Test from "@/components/Test";
 import { motion } from "framer-motion";
 import useScrollToTop from "@/hooks/useScrollToTop";
+import { useIntro } from "@/contexts/IntroContext";
 
 // type IndexPageProps = {};
 // type IndexPageRef = React.ForwardedRef<HTMLDivElement>;
 
 function AboutPage() {
   useScrollToTop();
+  const intro = useIntro();
+
+  const transition = intro
+    ? { duration: 0.75, ease: "easeInOut", delay: 1.5 }
+    : { duration: 0.75, ease: "easeInOut", delay: 0.5 };
 
   return (
     <PageTransition bgColor='bg-white' textColor='text-black'>
@@ -20,7 +26,7 @@ function AboutPage() {
           opacity: 1,
           // y: 0
         }}
-        transition={{ duration: 0.6, ease: "easeInOut", delay: 0.85 }}
+        transition={transition}
         exit={{
           // x: "20%",
           opacity: 0,
