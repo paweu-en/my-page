@@ -9,12 +9,12 @@ import { useIntro } from "@/contexts/IntroContext";
 // const inter = Inter({ subsets: ["latin"] });
 
 function IndexPage() {
-  useScrollToTop();
+  useScrollToTop(725);
   const intro = useIntro();
 
   const transition = intro
     ? { duration: 0.75, ease: "easeInOut", delay: 1.5 }
-    : { duration: 0.75, ease: "easeInOut", delay: 0.5 };
+    : { duration: 0.75, ease: "easeInOut", delay: 0.75 };
 
   return (
     <PageTransition bgColor='bg-black' textColor='text-white'>

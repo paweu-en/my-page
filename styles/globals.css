@@ -17,13 +17,13 @@
 }
 
 /* SCROLLBAR --------------- */
-html {
+/* html {
   scrollbar-width: none;
 }
 
 body::-webkit-scrollbar {
   width: 0;
-}
+} */
 /* SCROLLBAR --------------- */
 
 body {
