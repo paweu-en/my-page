@@ -3,6 +3,7 @@ import Test from "@/components/Test";
 import { motion } from "framer-motion";
 import useScrollToTop from "@/hooks/useScrollToTop";
 import { useIntro } from "@/contexts/IntroContext";
+import { fadeIn, fadeOut } from "@/animations";
 
 // type IndexPageProps = {};
 // type IndexPageRef = React.ForwardedRef<HTMLDivElement>;
@@ -18,15 +19,8 @@ function AboutPage() {
   return (
     <PageTransition bgColor='bg-white' textColor='text-black'>
       <motion.div
-        initial={{
-          opacity: 0,
-          // y: "-10%"
-        }}
-        animate={{
-          opacity: 1,
-          // y: 0
-        }}
-        transition={transition}
+        initial={fadeOut(0.75, intro ? 1.5 : 0.75, [1, 0, 0.8, 0.8])}
+        animate={fadeIn(0.75, intro ? 1.5 : 0.75, [1, 0, 0.8, 0.8])}
         exit={{
           // x: "20%",
           opacity: 0,
