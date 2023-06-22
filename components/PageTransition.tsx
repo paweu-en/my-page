@@ -14,7 +14,6 @@ function PageTransition({ children, bgColor, textColor }: PageTransitionTypes) {
   const path = usePathname();
   const intro = useIntro();
 
-  const indexExit = {};
   const aboutInitial = { x: "100%" };
   const aboutAnimate = { x: 0 };
   const aboutExit = { x: "100%" };
@@ -59,7 +58,7 @@ function PageTransition({ children, bgColor, textColor }: PageTransitionTypes) {
       ref={pageRef}
       initial={!intro && path === "/about" && aboutInitial}
       animate={!intro && path === "/about" && aboutAnimate}
-      exit={path === "/about" ? indexExit : aboutExit}
+      exit={path === "/about" ? {} : aboutExit}
       transition={transition}
       onAnimationStart={startAnimation}
       onAnimationComplete={completeAnimation}

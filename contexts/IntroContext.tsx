@@ -19,7 +19,7 @@ export const IntroProvider = ({ children }: IntroProviderType) => {
   // console.log("🚀 ~ file: IntroContext.tsx:13 ~ IntroProvider ~ intro:", intro);
 
   useEffect(() => {
-    const timeout = setTimeout(() => setIntro(false), 2000);
+    const timeout = setTimeout(() => setIntro(false), 1000);
     return () => clearTimeout(timeout);
   }, []);
 
