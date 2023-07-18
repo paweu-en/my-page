@@ -1,14 +1,14 @@
 export const indexPageContent = (delay: number) => ({
-  contentInitial: {
+  init: {
     y: "2%",
     opacity: 0,
   },
-  contentAnimate: {
+  fadeIn: {
     y: 0,
     opacity: 1,
     transition: { duration: 0.75, delay, ease: "easeInOut" },
   },
-  contentExit: {
+  fadeOut: {
     x: "-35%",
     opacity: 0,
     transition: { duration: 0.75, ease: [1, 0, 0.8, 0.8] },
@@ -16,14 +16,14 @@ export const indexPageContent = (delay: number) => ({
 });
 
 export const aboutPageContent = (delay: number) => ({
-  contentInitial: {
+  init: {
     opacity: 0,
   },
-  contentAnimate: {
+  fadeIn: {
     opacity: 1,
     transition: { duration: 0.75, delay, ease: "easeInOut" },
   },
-  contentExit: {
+  fadeOut: {
     opacity: 0,
     transition: { duration: 0.75, ease: [1, 0, 0.8, 0.8] },
   },
