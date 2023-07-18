@@ -18,9 +18,9 @@ function IndexPage() {
     <PageTransition bgColor='bg-black' textColor='text-white'>
       <motion.div
         variants={indexPageContent(delay)}
-        initial='contentInitial'
-        animate='contentAnimate'
-        exit='contentExit'
+        initial='init'
+        animate='fadeIn'
+        exit='fadeOut'
         className={`flex flex-col items-center`}>
         <h1>Index Page!</h1>
         <Test />

@@ -14,9 +14,9 @@ function AboutPage() {
     <PageTransition bgColor='bg-white' textColor='text-black'>
       <motion.div
         variants={aboutPageContent(delay)}
-        initial='contentInitial'
-        animate='contentAnimate'
-        exit='contentExit'
+        initial='init'
+        animate='fadeIn'
+        exit='fadeOut'
         className='flex flex-col items-center'>
         <h1>About Page!</h1>
 
