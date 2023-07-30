@@ -5,7 +5,8 @@ import Test from "@/components/Test";
 import { motion } from "framer-motion";
 import useScrollToTop from "@/hooks/useScrollToTop";
 import { useIntro } from "@/contexts/IntroContext";
-import { indexPageContent } from "@/animations";
+import { indexPageContent, aboutPageContent } from "@/animations";
+import Gradient from "@/components/Gradient";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -16,12 +17,15 @@ function IndexPage() {
 
   return (
     <PageTransition bgColor='bg-black' textColor='text-white'>
+      <div>
+        <Gradient />
+      </div>
       <motion.div
         variants={indexPageContent(delay)}
         initial='init'
         animate='fadeIn'
         exit='fadeOut'
-        className={`flex flex-col items-center`}>
+        className={`flex flex-col items-center pt-[150px] px-6`}>
         <h1>Index Page!</h1>
         <Test />
         <Test />
@@ -34,6 +38,7 @@ function IndexPage() {
         <Test />
         <Test />
       </motion.div>
+      {/* <div className='gradient-bottom'></div> */}
     </PageTransition>
   );
 }
