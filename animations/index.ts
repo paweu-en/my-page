@@ -9,7 +9,7 @@ export const indexPageContent = (delay: number) => ({
     transition: { duration: 0.75, delay, ease: "easeInOut" },
   },
   fadeOut: {
-    x: "-35%",
+    x: "-25%",
     opacity: 0,
     transition: { duration: 0.75, ease: [1, 0, 0.8, 0.8] },
   },
