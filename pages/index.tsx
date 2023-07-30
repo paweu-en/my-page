@@ -38,7 +38,6 @@ function IndexPage() {
         <Test />
         <Test />
       </motion.div>
-      {/* <div className='gradient-bottom'></div> */}
     </PageTransition>
   );
 }

@@ -20,12 +20,14 @@ function PageTransition({ children, bgColor, textColor }: PageTransitionTypes) {
   const transition = { duration: 0.75, ease: [1, 0, 0.8, 0.8] };
 
   const indexPageAnimationStyles =
-    "position: absolute; top: 0; left: 0; width: 100%; z-index: -1";
+    "position: absolute; top: 0; left: 0; width: 100%; mix-blend-mode: diffrence; z-index: -1;";
   const aboutPageAnimationStyles =
-    "position: absolute; top: 0; left: 0; width: 100%; z-index: 1";
+    "position: absolute; top: 0; left: 0; width: 100%; mix-blend-mode: diffrence; z-index: 1";
 
   const startAnimation = () => {
     const currentPage = pageRef.current?.parentElement?.children[1];
+
+    document.body.classList.add("page-transition");
 
     pageRef.current?.parentElement?.children[0].classList.remove(
       "!bg-transparent"
@@ -42,6 +44,8 @@ function PageTransition({ children, bgColor, textColor }: PageTransitionTypes) {
   };
 
   const completeAnimation = () => {
+    if (path === "/") document.body.classList.remove("page-transition");
+
     pageRef.current?.parentElement?.children[0].classList.add(
       "!bg-transparent"
     );
@@ -62,7 +66,7 @@ function PageTransition({ children, bgColor, textColor }: PageTransitionTypes) {
       transition={transition}
       onAnimationStart={startAnimation}
       onAnimationComplete={completeAnimation}
-      className={`relative pt-[100px] px-6 ${bgColor} ${textColor} !bg-transparent`}>
+      className={`relative ${bgColor} ${textColor} !bg-transparent`}>
       {children}
     </motion.div>
   );
