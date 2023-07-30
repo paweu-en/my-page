@@ -17,7 +17,7 @@ function AboutPage() {
         initial='init'
         animate='fadeIn'
         exit='fadeOut'
-        className='flex flex-col items-center'>
+        className='flex flex-col items-center pt-[150px] px-6'>
         <h1>About Page!</h1>
 
         <Test />
