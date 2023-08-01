@@ -54,7 +54,8 @@ function PageTransition({ children, bgColor, textColor }: PageTransitionTypes) {
     );
 
     const currentPage = pageRef.current?.parentElement?.lastElementChild;
-    setTimeout(() => currentPage?.removeAttribute("style"), 21);
+    // setTimeout(() => currentPage?.removeAttribute("style"), 1000);
+    currentPage?.removeAttribute("style");
   };
 
   return (

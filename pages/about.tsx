@@ -8,7 +8,7 @@ import { aboutPageContent } from "@/animations";
 function AboutPage() {
   useScrollToTop(750);
   const intro = useIntro();
-  const delay = intro ? 2.25 : 0.75;
+  const delay = intro ? 2 : 0.75;
 
   return (
     <PageTransition bgColor='bg-white' textColor='text-black'>

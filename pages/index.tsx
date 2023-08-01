@@ -11,7 +11,7 @@ import Gradient from "@/components/Gradient";
 // const inter = Inter({ subsets: ["latin"] });
 
 function IndexPage() {
-  useScrollToTop(725);
+  useScrollToTop(750);
   const intro = useIntro();
   const delay = intro ? 2 : 0.75;
 
