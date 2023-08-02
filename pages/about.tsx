@@ -19,7 +19,16 @@ function AboutPage() {
         exit='fadeOut'
         className='flex flex-col items-center pt-[150px] px-6'>
         <h1>About Page!</h1>
-
+        <Test />
+        <Test />
+        <Test />
+        <Test />
+        <Test />
+        <Test />
+        <Test />
+        <Test />
+        <Test />
+        <Test />
         <Test />
         <Test />
         <Test />

@@ -37,6 +37,16 @@ function IndexPage() {
         <Test />
         <Test />
         <Test />
+        <Test />
+        <Test />
+        <Test />
+        <Test />
+        <Test />
+        <Test />
+        <Test />
+        <Test />
+        <Test />
+        <Test />
       </motion.div>
     </PageTransition>
   );

@@ -25,6 +25,7 @@ function PageTransition({ children, bgColor, textColor }: PageTransitionTypes) {
     "position: absolute; top: 0; left: 0; width: 100%; mix-blend-mode: diffrence; z-index: 1";
 
   const startAnimation = () => {
+    if (path === "/") document.body.classList.remove("test");
     const currentPage = pageRef.current?.parentElement?.children[1];
 
     document.body.classList.add("page-transition");
@@ -44,7 +45,8 @@ function PageTransition({ children, bgColor, textColor }: PageTransitionTypes) {
   };
 
   const completeAnimation = () => {
-    if (path === "/") document.body.classList.remove("page-transition");
+    // if (path === "/") document.body.classList.remove("page-transition");
+    document.body.classList.remove("page-transition");
 
     pageRef.current?.parentElement?.children[0].classList.add(
       "!bg-transparent"

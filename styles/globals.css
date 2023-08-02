@@ -34,6 +34,16 @@ body.page-transition .fixed {
   mix-blend-mode: difference;
 }
 
+body.test .fixed {
+  color: black;
+  /* backdrop-filter: blur(4px); */
+  /* mask: linear-gradient(white 50%, transparent); */
+}
+
+.mask {
+  mask: linear-gradient(black 50%, transparent);
+}
+
 /* .test::before {
   content: "";
   position: fixed;
