@@ -3,13 +3,10 @@ import type { AppProps } from "next/app";
 import { AnimatePresence } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import SmoothScroll from "@/lib/SmoothScroll";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { IntroProvider } from "@/contexts/IntroContext";
 import { usePathname } from "next/navigation";
-import BodyColorSwitch from "@/components/BodyColorSwitch";
 import { Inter } from "next/font/google";
-import Version from "@/components/Version";
-import { time } from "console";
 
 // const inter100 = Inter({ subsets: ["latin"], weight: "100" });
 // const inter200 = Inter({ subsets: ["latin"], weight: "200" });
@@ -38,17 +35,11 @@ export default function App({ Component, pageProps }: AppProps) {
       <Navbar font={inter400.className} />
       <main className={`${inter400.className} relative overflow-hidden`}>
         <IntroProvider>
-          <AnimatePresence
-            // onExitComplete={onExitComplete}
-            mode='sync'
-            // initial={false}
-          >
+          <AnimatePresence mode='sync'>
             <Component key={path} {...pageProps} />
           </AnimatePresence>
         </IntroProvider>
       </main>
-      <Version />
-      {/* <BodyColorSwitch theme={theme} setTheme={setTheme} /> */}
     </>
   );
 }
