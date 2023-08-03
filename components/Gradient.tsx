@@ -4,7 +4,7 @@ const Gradient = () => {
   return (
     <>
       <motion.div
-        className='gradient'
+        className='gradient-top'
         initial={false}
         animate={{ x: 0 }}
         exit={{
@@ -12,7 +12,7 @@ const Gradient = () => {
           transition: { duration: 0.75, ease: [1, 0, 0.8, 0.8] },
         }}></motion.div>
       <motion.div
-        className='gradient-second'
+        className='gradient-bottom'
         initial={false}
         animate={{ x: 0 }}
         exit={{
