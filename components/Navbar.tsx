@@ -14,7 +14,7 @@ const Navbar = ({ font }: NavbarTypes) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.75, delay: 1.5, ease: "easeInOut" }}
-      className={`${font} navbar text-white text-sm lg:text-base fixed w-full h-[100px] p-6 bg-transparent flex justify-between items-center z-20`}>
+      className={`${font} navbar text-white text-sm md:text-base fixed w-full h-[100px] p-6 bg-transparent flex justify-between items-center z-20`}>
       <h1 className=''>Paweł Naradowski</h1>
       <nav className='max-[320px]:flex items-end flex-col'>
         <Link
