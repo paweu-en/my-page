@@ -17,9 +17,7 @@ function IndexPage() {
 
   return (
     <PageTransition bgColor='bg-black' textColor='text-white'>
-      <div>
-        <Gradient />
-      </div>
+      <Gradient />
       <motion.div
         variants={indexPageContent(delay)}
         initial='init'
