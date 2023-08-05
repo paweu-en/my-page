@@ -6,6 +6,11 @@ type NavbarTypes = {
   font: string;
 };
 
+const navigation = [
+  { name: "Index", path: "/" },
+  { name: "About", path: "/about" },
+];
+
 const Navbar = ({ font }: NavbarTypes) => {
   const path = usePathname();
 
@@ -14,29 +19,21 @@ const Navbar = ({ font }: NavbarTypes) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.75, delay: 1.5, ease: "easeInOut" }}
-      className={`${font} navbar text-white text-sm md:text-base fixed w-full h-[100px] p-6 bg-transparent flex justify-between items-center z-20`}>
+      className={`${font} navbar text-white text-sm lg:text-base fixed w-full h-[100px] p-6 bg-transparent flex justify-between items-center z-20 select-none`}>
       <h1 className=''>Paweł Naradowski</h1>
       <nav className='max-[320px]:flex items-end flex-col'>
-        <Link
-          href='/'
-          scroll={false}
-          className={`ml-5 transition-opacity duration-500 ${
-            path === "/"
-              ? "cursor-default pointer-events-none"
-              : "opacity-50 hover:opacity-100"
-          }`}>
-          Index
-        </Link>
-        <Link
-          href='/about'
-          scroll={false}
-          className={`ml-5 transition-opacity duration-500 ${
-            path === "/about"
-              ? "cursor-default pointer-events-none"
-              : "opacity-50 hover:opacity-100"
-          }`}>
-          About
-        </Link>
+        {navigation.map((link) => (
+          <Link
+            href={link.path}
+            scroll={false}
+            className={`ml-5 transition-opacity duration-500 ${
+              path === link.path
+                ? "cursor-default pointer-events-none"
+                : "opacity-50 hover:opacity-100"
+            }`}>
+            {link.name}
+          </Link>
+        ))}
       </nav>
     </motion.div>
   );
