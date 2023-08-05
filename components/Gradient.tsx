@@ -8,8 +8,9 @@ const Gradient = () => {
 
   return (
     <div>
-      {positions.map((position) => (
+      {positions.map((position, i) => (
         <motion.div
+          key={i}
           className={`gradient-${position}`}
           initial={!intro ? { x: "-100%" } : false}
           animate={{ x: 0 }}
