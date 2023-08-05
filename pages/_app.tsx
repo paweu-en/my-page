@@ -2,7 +2,7 @@ import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { AnimatePresence } from "framer-motion";
 import Navbar from "@/components/Navbar";
-import SmoothScroll from "@/lib/SmoothScroll";
+import SmoothScroll from "@/components/SmoothScroll";
 import { useEffect } from "react";
 import { IntroProvider } from "@/contexts/IntroContext";
 import { usePathname } from "next/navigation";
@@ -31,15 +31,16 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <SmoothScroll />
-      <Navbar font={inter400.className} />
-      <main className={`${inter400.className} relative overflow-hidden`}>
-        <IntroProvider>
-          <AnimatePresence mode='sync'>
-            <Component key={path} {...pageProps} />
-          </AnimatePresence>
-        </IntroProvider>
-      </main>
+      <SmoothScroll>
+        <Navbar font={inter400.className} />
+        <main className={`${inter400.className} relative overflow-hidden`}>
+          <IntroProvider>
+            <AnimatePresence mode='sync'>
+              <Component key={path} {...pageProps} />
+            </AnimatePresence>
+          </IntroProvider>
+        </main>
+      </SmoothScroll>
     </>
   );
 }
