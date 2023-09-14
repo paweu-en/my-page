@@ -1,5 +1,5 @@
 import { ReactNode, useRef } from "react";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useIntro } from "@/contexts/IntroContext";
 
