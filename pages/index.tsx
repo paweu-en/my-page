@@ -1,14 +1,10 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
 import PageTransition from "@/components/PageTransition";
 import Test from "@/components/Test";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import useScrollToTop from "@/hooks/useScrollToTop";
 import { useIntro } from "@/contexts/IntroContext";
-import { indexPageContent, aboutPageContent } from "@/animations";
+import { indexContentAnimation } from "@/utils/animations";
 import Gradient from "@/components/Gradient";
-
-// const inter = Inter({ subsets: ["latin"] });
 
 function IndexPage() {
   useScrollToTop(750);
@@ -19,12 +15,32 @@ function IndexPage() {
     <PageTransition bgColor='bg-black' textColor='text-white'>
       <Gradient />
       <motion.div
-        variants={indexPageContent(delay)}
+        variants={indexContentAnimation(delay)}
         initial='init'
         animate='fadeIn'
         exit='fadeOut'
-        className={`flex flex-col items-center pt-[150px] px-6`}>
+        className={`flex flex-col items-center pt-[150px] pb-14 px-6`}>
         <h1>Index Page!</h1>
+        <Test />
+        <Test />
+        <Test />
+        <Test />
+        <Test />
+        <Test />
+        <Test />
+        <Test />
+        <Test />
+        <Test />
+        <Test />
+        <Test />
+        <Test />
+        <Test />
+        <Test />
+        <Test />
+        <Test />
+        <Test />
+        <Test />
+        <Test />
         <Test />
         <Test />
         <Test />
