@@ -1,5 +1,5 @@
 export const navbarAnimation = () => ({
-  init: { opacity: 0.01 },
+  init: { opacity: 0.001 },
   fadeIn: {
     opacity: 1,
     transition: { duration: 0.75, delay: 1.5, ease: "easeInOut" },
@@ -8,13 +8,13 @@ export const navbarAnimation = () => ({
 
 export const indexContentAnimation = (delay: number) => ({
   init: {
-    y: "2%",
-    opacity: 0.01,
+    // y: "2%",
+    opacity: 0.001,
   },
   fadeIn: {
-    y: 0,
+    // y: 0,
     opacity: 1,
-    transition: { duration: 0.75, delay, ease: "easeInOut" },
+    transition: { duration: 0.75, ease: "easeInOut" },
   },
   fadeOut: {
     x: "-25%",
@@ -25,7 +25,7 @@ export const indexContentAnimation = (delay: number) => ({
 
 export const aboutContentAnimation = (delay: number) => ({
   init: {
-    opacity: 0.01,
+    opacity: 0.001,
   },
   fadeIn: {
     opacity: 1,

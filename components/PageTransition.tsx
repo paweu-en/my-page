@@ -52,7 +52,7 @@ function PageTransition({ children, bgColor, textColor }: PageTransitionTypes) {
       transition={transition}
       onAnimationStart={startAnimation}
       onAnimationComplete={completeAnimation}
-      className={`relative ${bgColor} ${textColor}`}>
+      className={`relative ${bgColor} ${textColor} h-[500vh]`}>
       {children}
     </motion.div>
   );

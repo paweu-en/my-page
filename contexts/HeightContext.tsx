@@ -41,7 +41,7 @@ export const HeightProvider = ({ children }: HeightProviderType) => {
     if (path === "/") {
       debouncedSetHeight();
       window.addEventListener("resize", debouncedSetHeight);
-      // console.log(height);
+      console.log(height);
     } else {
       const page = document.querySelector(".page-height");
 

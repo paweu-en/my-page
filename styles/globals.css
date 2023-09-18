@@ -133,3 +133,7 @@ body.page-transition .navbar {
     );
   }
 }
+
+canvas {
+  height: 100vh;
+}
