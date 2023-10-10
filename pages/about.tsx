@@ -19,7 +19,7 @@ function AboutPage() {
         initial='init'
         animate='fadeIn'
         exit='fadeOut'
-        className='flex flex-col items-center pt-[150px] pb-18 px-6 min-h-screen page-height'>
+        className='flex flex-col items-center pt-[150px] pb-18 px-6 min-h-screen'>
         <h1>About Page!</h1>
         <Test />
         <Test />

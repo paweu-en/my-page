@@ -9,52 +9,61 @@ import Gradient from "@/components/Gradient";
 import type { InferGetStaticPropsType, GetStaticProps } from "next";
 // import Slider from "@/components/Slider";
 
-type Projects = {
-  projects: string[];
-};
+// type Projects = {
+//   projects: string[];
+// };
 
-const Slider = dynamic(() => import("../components/Slider"), {
-  ssr: false,
-  loading: () => (
-    <h1 className='absolute text-white top-1/2 left-1/2'>LOADING...!</h1>
-  ),
-});
+// const Slider = dynamic(() => import("../components/Slider"), {
+//   ssr: false,
+//   loading: () => (
+//     <h1 className='absolute text-white top-1/2 left-1/2'>LOADING...!</h1>
+//   ),
+// });
 
-export const getStaticProps = (async (context) => {
-  const projects = await fetch(
-    "https://dog.ceo/api/breed/hound/images/random/5"
-  )
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data.message);
-      return data.message;
-    });
-  // console.log(projects);
-  return { props: { projects }, revalidate: 600 };
-}) satisfies GetStaticProps<{
-  projects: Projects;
-}>;
+// export const getStaticProps = (async (context) => {
+//   const projects = await fetch(
+//     "https://dog.ceo/api/breed/hound/images/random/5"
+//   )
+//     .then((res) => res.json())
+//     .then((data) => {
+//       console.log(data.message);
+//       return data.message;
+//     });
+//   // console.log(projects);
+//   return { props: { projects }, revalidate: 600 };
+// }) satisfies GetStaticProps<{
+//   projects: Projects;
+// }>;
 
-function IndexPage({
-  projects,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+function IndexPage() {
+  //   {
+  //   projects,
+  // }: InferGetStaticPropsType<typeof getStaticProps>
   useScrollToTop(750);
   const intro = useIntro();
   const delay = intro ? 2 : 0.75;
 
   return (
     <PageTransition bgColor='bg-black' textColor='text-white'>
-      <Gradient />
-      <Slider urls={projects} delay={delay} />
       <motion.div
         // variants={indexContentAnimation(delay)}
         // initial='init'
         // animate='fadeIn'
-        // exit='fadeOut'
+        exit='fadeOut'
         // className={`flex flex-col items-center pt-[150px] pb-14 px-6 min-h-screen`}
-        className='relative'>
-        {/* {content!!!} */}
+      >
+        {/* <div className='content'>
+          <div className='element'>1</div>
+          <div className='element'>2</div>
+          <div className='element'>3</div>
+          <div className='element'>4</div>
+          <div className='element'>5</div>
+          <div className='element'></div>
+        </div> */}
+        <aside></aside>
       </motion.div>
+      {/* <aside className='left'></aside>
+      <aside className='right'></aside> */}
     </PageTransition>
   );
 }
