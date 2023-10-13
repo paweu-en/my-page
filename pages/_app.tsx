@@ -10,6 +10,7 @@ import { Inter } from "next/font/google";
 import { HeightProvider } from "@/contexts/HeightContext";
 import Gradient from "@/components/Gradient";
 import dynamic from "next/dynamic";
+import { SmoothScrollbar } from "@14islands/r3f-scroll-rig";
 
 // const inter100 = Inter({ subsets: ["latin"], weight: "100" });
 // const inter200 = Inter({ subsets: ["latin"], weight: "200" });
@@ -55,26 +56,27 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <SmoothScroll>
-        <IntroProvider>
-          <HeightProvider>
-            <LazyMotion features={domAnimation}>
-              <div className={`${inter400.className}`}>
-                <Navbar />
-                <main className='relative overflow-hidden'>
-                  <AnimatePresence mode='sync'>
-                    <Component key={path} {...pageProps} />
-                  </AnimatePresence>
-                </main>
-                <div>
-                  <Gradient transition={path === "/"} />
-                  <Slider urls={textures} />
-                </div>
+      <SmoothScrollbar />
+      {/* <SmoothScroll> */}
+      <IntroProvider>
+        <HeightProvider>
+          <LazyMotion features={domAnimation}>
+            <div className={`${inter400.className}`}>
+              <Navbar />
+              <main className='relative overflow-hidden'>
+                <AnimatePresence mode='sync'>
+                  <Component key={path} {...pageProps} />
+                </AnimatePresence>
+              </main>
+              <div>
+                <Gradient transition={path === "/"} />
+                <Slider urls={textures} />
               </div>
-            </LazyMotion>
-          </HeightProvider>
-        </IntroProvider>
-      </SmoothScroll>
+            </div>
+          </LazyMotion>
+        </HeightProvider>
+      </IntroProvider>
+      {/* </SmoothScroll> */}
     </>
   );
 }

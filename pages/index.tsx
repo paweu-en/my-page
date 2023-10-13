@@ -52,14 +52,15 @@ function IndexPage() {
         exit='fadeOut'
         // className={`flex flex-col items-center pt-[150px] pb-14 px-6 min-h-screen`}
       >
-        {/* <div className='content'>
-          <div className='element'>1</div>
-          <div className='element'>2</div>
-          <div className='element'>3</div>
-          <div className='element'>4</div>
-          <div className='element'>5</div>
-          <div className='element'></div>
-        </div> */}
+        <div className='content'>
+          <div className='text-4xl element'>1</div>
+          <div className='text-4xl element'>2</div>
+          <div className='text-4xl element'>3</div>
+          <div className='text-4xl element'>4</div>
+          <div className='text-4xl element'>5</div>
+          <div className='test'></div>
+          {/* <div className='element'></div> */}
+        </div>
         <aside></aside>
       </motion.div>
       {/* <aside className='left'></aside>
