@@ -96,17 +96,17 @@ function AboutPage() {
               className={`text-justify ${isHovered && "line-through"}`}>
               Hi there! I&#39;m Paweł&nbsp;
               <span className='text-stone-400'>/pʌveʊ/</span> and frankly
-              speaking I glad to see you here. &#40;...more content soon, please
-              be patient!&#41;.
+              speaking I&#39;m glad to see you here. &#40;...more content soon,
+              please be patient!&#41;.
             </motion.p>
           </div>
           <Image
             src='/me.jpg'
-            alt='me on picture'
+            alt='My picture'
             width={1000}
             height={1500}
             // className='justify-self-end w-full row-span-2 min-[500px]:w-2/3 md:w-5/6 md:justify-self-start'
-            className='w-2/3 col-start-2 lg:w-full lg:py-20 lg:pl-20 justify-self-end'
+            className='col-start-2 sm:w-4/6 lg:w-full lg:py-20 lg:pl-20 justify-self-end'
           />
         </div>
       </motion.div>
