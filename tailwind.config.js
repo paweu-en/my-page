@@ -11,6 +11,10 @@ module.exports = {
         "text-color": "var(--text-color)",
         "background-color": "var(--background-color)",
       },
+      fontFamily: {
+        inter: ["var(--font-inter)"],
+        voigante: ["var(--font-voigante)"],
+      },
     },
   },
   plugins: [],

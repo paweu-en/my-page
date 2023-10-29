@@ -1,7 +1,8 @@
 import vertexShader from "@/utils/shaders/vertex.glsl";
 import fragmentShader from "@/utils/shaders/fragment.glsl";
 import { useTexture } from "@react-three/drei";
-import { useThree } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
+import * as THREE from "three";
 import { useEffect, useRef, useState } from "react";
 import { Group } from "three";
 import { motion } from "framer-motion-3d";
@@ -11,6 +12,7 @@ import type { InferGetStaticPropsType, GetStaticProps } from "next";
 
 type Props = {
   urls: string[];
+  intro: boolean;
 };
 
 // export async function getStaticProps({ params }) {
@@ -27,7 +29,7 @@ type Props = {
 //   };
 // }
 
-function Scene({ urls }: Props) {
+function Scene({ urls, intro }: Props) {
   const [index, setIndex] = useState(true);
   const [scale, setScale] = useState(0);
   const path = usePathname();
@@ -39,39 +41,84 @@ function Scene({ urls }: Props) {
   const viewports = urls.length - 1;
 
   const { scrollY } = useScroll();
+  const elementScroll = document.querySelector("div.scroll")!;
   useMotionValueEvent(scrollY, "change", (scrollY) => {
+    // elementScroll.textContent = `scroll: ${scrollY}`;
     const scrollPosition =
-      (scrollY / (html.scrollHeight - html.clientHeight)) * viewports;
-    console.log("ScrollY: ", scrollY);
-    ref.current.position.y = viewport.height * 0.775 * scrollPosition * scale;
+      // (scrollY / (html.scrollHeight - html.clientHeight)) * viewports;
+      (scrollY / (html.scrollHeight - window.innerHeight)) * viewports;
+    // console.log("ScrollY: ", scrollY);
+    ref.current.position.y = viewport.height * 0.8 * scrollPosition * scale;
   });
 
   useEffect(() => {
     const resize = viewport.aspect * 0.85;
     const scale = resize < 1 ? resize : 1;
-    console.log("SCALE: ", scale);
+    // console.log("SCALE: ", scale);
     setScale(scale);
     ref.current.scale.x = scale;
     ref.current.scale.y = scale;
 
+    // const testerFunction = () => {
+    //   const vp = document.querySelector("div.aspect")!;
+    //   vp.textContent = `ASPECT: ${resize}`;
+
+    //   const vheight = document.querySelector("div.vheight")!;
+    //   vheight.textContent = `VIEWPORT.HEIGHT: ${viewport.height}`;
+    // };
+
+    // testerFunction();
+
+    // setTimeout(() => {
+    //   testerFunction();
+    // }, 0);
+
     if (path === "/") setIndex(true);
     else setIndex(false);
-  }, [viewport]);
+  }, [viewport, path, scale]);
 
-  // useFrame(({ mouse, camera }, delta) => {
-  //   camera.position.x = THREE.MathUtils.lerp(
-  //     camera.position.x,
-  //     mouse.x * 0.015,
-  //     0.1
-  //   );
-  //   camera.position.y = THREE.MathUtils.lerp(
-  //     camera.position.y,
-  //     mouse.y * 0.015,
-  //     0.1
-  //   );
+  // useEffect(() => {
+  //   const rescaleCanvas = () => {
+  //     setTimeout(() => alert(viewport.height), 1000);
+  //   };
+
+  //   window.addEventListener("resize", rescaleCanvas);
+  //   return () => window.removeEventListener("resize", rescaleCanvas);
   // });
 
-  const margin = -viewport.height * 0.775;
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (event: MouseEvent) => {
+      // console.log("x: ", event.clientX, "y: ", event.clientY);
+      setMousePos({ x: event.clientX, y: event.clientY });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      // console.log("remove!");
+    };
+  }, []);
+
+  useFrame(({ camera, mouse }, delta) => {
+    // camera.position.x = mousePos.x * 0.0015 * delta;
+    // camera.position.y = mousePos.y * 0.0015 * delta;
+
+    camera.position.x = THREE.MathUtils.lerp(
+      camera.position.x,
+      mousePos.x * 0.00003,
+      0.1
+    );
+    camera.position.y = THREE.MathUtils.lerp(
+      camera.position.y,
+      mousePos.y * 0.00005,
+      0.1
+    );
+  });
+
+  const margin = -viewport.height * 0.8;
 
   return (
     <group ref={ref}>
@@ -79,20 +126,22 @@ function Scene({ urls }: Props) {
         <motion.mesh
           key={i}
           position={[0, 0, 0]}
-          initial={index ? { y: -(i + 1) * 2 } : { y: i * margin }}
+          initial={
+            index ? { y: viewport.height * -(i + 1) * 2 } : { y: i * margin }
+          }
           animate={
             index
               ? {
                   y: i * margin,
                   transition: {
                     duration: 1.25,
-                    delay: 0.75,
+                    delay: intro ? 1.75 : 1.4,
                     ease: [0, 1, 0, 1],
                   },
                 }
               : {
                   y: viewport.height * -(i + 1) * 2,
-                  transition: { duration: 0, delay: 0.75 },
+                  transition: { duration: 0, delay: 0.75, ease: [0, 1, 0, 1] },
                 }
           }>
           <planeGeometry args={[1.5, 1, 20, 20]} />

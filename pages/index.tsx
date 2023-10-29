@@ -7,6 +7,13 @@ import { useIntro } from "@/contexts/IntroContext";
 import { indexContentAnimation } from "@/utils/animations";
 import Gradient from "@/components/Gradient";
 import type { InferGetStaticPropsType, GetStaticProps } from "next";
+import { UseCanvas } from "@14islands/r3f-scroll-rig";
+import Slider from "@/components/Slider";
+import Scene from "@/components/Scene";
+import tunnel from "tunnel-rat";
+import TextReveal from "@/components/TextReveal";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 // import Slider from "@/components/Slider";
 
 // type Projects = {
@@ -35,33 +42,88 @@ import type { InferGetStaticPropsType, GetStaticProps } from "next";
 //   projects: Projects;
 // }>;
 
+const testUrls = [
+  "Projekt_no.1",
+  "Projekt_no.2",
+  "Projekt_no.3",
+  "Projekt_no.4",
+  "Projekt_no.5",
+  "Projekt_no.6",
+  "Projekt_no.7",
+];
+
 function IndexPage() {
   //   {
   //   projects,
   // }: InferGetStaticPropsType<typeof getStaticProps>
+  const three = tunnel();
+  const [first, setFirst] = useState(true);
   useScrollToTop(750);
   const intro = useIntro();
-  const delay = intro ? 2 : 0.75;
+  const path = usePathname();
+  const transition = path !== "/";
+  const delay = intro ? 2.75 : first ? 0.75 : 0;
+  // console.log("DELAY", delay);
+
+  useEffect(() => {
+    setTimeout(() => setFirst(false), 2000);
+  }, [first]);
 
   return (
     <PageTransition bgColor='bg-black' textColor='text-white'>
       <motion.div
         // variants={indexContentAnimation(delay)}
-        // initial='init'
-        // animate='fadeIn'
+        initial='init'
+        animate='fadeIn'
         exit='fadeOut'
         // className={`flex flex-col items-center pt-[150px] pb-14 px-6 min-h-screen`}
       >
-        <div className='content'>
-          <div className='text-4xl element'>1</div>
-          <div className='text-4xl element'>2</div>
-          <div className='text-4xl element'>3</div>
-          <div className='text-4xl element'>4</div>
-          <div className='text-4xl element'>5</div>
-          <div className='test'></div>
-          {/* <div className='element'></div> */}
-        </div>
-        <aside></aside>
+        {/* <UseCanvas>
+          <Scene
+            urls={[
+              "./woman.jpg",
+              "./woman.jpg",
+              "./woman.jpg",
+              "./woman.jpg",
+              "./woman.jpg",
+            ]}
+            intro={intro}
+          />
+        </UseCanvas> */}
+        <motion.div
+          initial={transition && { x: 0, opacity: 1 }}
+          animate={transition && { x: "-25%", opacity: 0.001 }}
+          transition={{
+            duration: 0.75,
+            ease: [1, 0, 0.8, 0.8],
+          }}
+          className='projects'>
+          {/* <div className='text-4xl element'>1</div> */}
+          {testUrls.map((title, i) => {
+            return (
+              <div key={i} className='text-[9vw] font-voigante project'>
+                <TextReveal
+                  intro={intro}
+                  delay={delay}
+                  option={{ margin: "0% 0% -5% 0%", threshold: 1 }}>
+                  {title}
+                </TextReveal>
+              </div>
+            );
+          })}
+        </motion.div>
+
+        {/* <aside className='line'></aside> */}
+        {/* <aside className='tester'></aside> */}
+        {/* <aside className='info'> */}
+        {/* <div className='text-sm text-white info'>-</div>
+          <div className='text-sm text-white vhinfo'>-</div>
+          <div className='text-sm text-white html'>-</div> */}
+        {/* <div className='text-sm text-white window'>-</div> */}
+        {/* <div className='text-sm text-white aspect'>-</div>
+          <div className='text-sm text-white vheight'>-</div> */}
+        {/* <div className='scroll'></div> */}
+        {/* </aside> */}
       </motion.div>
       {/* <aside className='left'></aside>
       <aside className='right'></aside> */}

@@ -14,11 +14,11 @@ export const indexContentAnimation = (delay: number) => ({
   fadeIn: {
     // y: 0,
     opacity: 1,
-    transition: { duration: 0.75, ease: "easeInOut" },
+    transition: { duration: 0.75, ease: "easeInOut", delay },
   },
   fadeOut: {
     x: "-25%",
-    opacity: 0,
+    // opacity: 0,
     transition: { duration: 0.75, ease: [1, 0, 0.8, 0.8] },
   },
 });
