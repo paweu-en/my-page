@@ -24,13 +24,11 @@ const TextReveal = ({
   styles,
   delay = 1,
 }: Props) => {
-  const text = children?.toString().split("");
-  // console.log("TEXT REVEAL", text);
+  const text = children?.toString().split("") || [""];
 
   return (
     <>
-      {text?.map((letter, i) => {
-        // console.log(letter);
+      {text.map((letter: string, i: number) => {
         return (
           <motion.span
             key={i}

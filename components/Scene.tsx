@@ -1,9 +1,9 @@
 import vertexShader from "@/utils/shaders/vertex.glsl";
 import fragmentShader from "@/utils/shaders/fragment.glsl";
 import { useTexture } from "@react-three/drei";
-import { useFrame, useThree } from "@react-three/fiber";
+import { useFrame, useLoader, useThree } from "@react-three/fiber";
 import * as THREE from "three";
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { Group } from "three";
 import { motion } from "framer-motion-3d";
 import { useMotionValueEvent, useScroll } from "framer-motion";
@@ -59,38 +59,14 @@ function Scene({ urls, intro }: Props) {
     ref.current.scale.x = scale;
     ref.current.scale.y = scale;
 
-    // const testerFunction = () => {
-    //   const vp = document.querySelector("div.aspect")!;
-    //   vp.textContent = `ASPECT: ${resize}`;
-
-    //   const vheight = document.querySelector("div.vheight")!;
-    //   vheight.textContent = `VIEWPORT.HEIGHT: ${viewport.height}`;
-    // };
-
-    // testerFunction();
-
-    // setTimeout(() => {
-    //   testerFunction();
-    // }, 0);
-
     if (path === "/") setIndex(true);
     else setIndex(false);
   }, [viewport, path, scale]);
-
-  // useEffect(() => {
-  //   const rescaleCanvas = () => {
-  //     setTimeout(() => alert(viewport.height), 1000);
-  //   };
-
-  //   window.addEventListener("resize", rescaleCanvas);
-  //   return () => window.removeEventListener("resize", rescaleCanvas);
-  // });
 
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
-      // console.log("x: ", event.clientX, "y: ", event.clientY);
       setMousePos({ x: event.clientX, y: event.clientY });
     };
 
@@ -98,14 +74,10 @@ function Scene({ urls, intro }: Props) {
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
-      // console.log("remove!");
     };
   }, []);
 
-  useFrame(({ camera, mouse }, delta) => {
-    // camera.position.x = mousePos.x * 0.0015 * delta;
-    // camera.position.y = mousePos.y * 0.0015 * delta;
-
+  useFrame(({ camera }) => {
     camera.position.x = THREE.MathUtils.lerp(
       camera.position.x,
       mousePos.x * 0.00003,
@@ -121,7 +93,7 @@ function Scene({ urls, intro }: Props) {
   const margin = -viewport.height * 0.8;
 
   return (
-    <group ref={ref}>
+    <group ref={ref} visible={!intro}>
       {images.map((image, i) => (
         <motion.mesh
           key={i}
@@ -141,7 +113,11 @@ function Scene({ urls, intro }: Props) {
                 }
               : {
                   y: viewport.height * -(i + 1) * 2,
-                  transition: { duration: 0, delay: 0.75, ease: [0, 1, 0, 1] },
+                  transition: {
+                    duration: 0,
+                    delay: 0.75,
+                    ease: [0, 1, 0, 1],
+                  },
                 }
           }>
           <planeGeometry args={[1.5, 1, 20, 20]} />

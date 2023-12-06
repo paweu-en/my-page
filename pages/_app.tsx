@@ -14,6 +14,7 @@ import dynamic from "next/dynamic";
 import { GlobalCanvas, SmoothScrollbar } from "@14islands/r3f-scroll-rig";
 import tunnel from "tunnel-rat";
 import { PerspectiveCamera } from "@react-three/drei";
+import Skeleton from "@/components/Skeleton";
 
 // const inter100 = Inter({ subsets: ["latin"], weight: "100" });
 // const inter200 = Inter({ subsets: ["latin"], weight: "200" });
@@ -51,20 +52,48 @@ const voigante = localFont({
 const Slider = dynamic(() => import("../components/Slider"), {
   ssr: false,
   // loading: () => (
-  //   <h1 className='absolute text-white top-1/2 left-1/2'>LOADING...!</h1>
+  //   // <Skeleton />
+  //   // <h1 className='absolute text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[9vw] font-voigante opacity-100'>
+  //   //   loading...
+  //   // </h1>
   // ),
 });
 
 export default function App({ Component, pageProps }: AppProps) {
   const [textures, setTextures] = useState<string[]>([]);
+  const [loading, setLoading] = useState(true);
   const path = usePathname();
 
-  const getTextures = () => {
-    fetch("https://dog.ceo/api/breeds/image/random/7")
+  async function testImageError(url: string) {
+    return await fetch(url, { method: "HEAD" })
+      .then((data) => {
+        // console.log(data);
+        if (data.ok) return data.url;
+      })
+      .catch(() => {
+        // console.log("error");
+        return "/error-404.jpg";
+      });
+  }
+
+  const checkTextures = async (array: []) => {
+    const newArray: string[] = [];
+    for await (const el of array.entries()) {
+      //@ts-ignore
+      newArray[el[0]] = await testImageError(el[1]);
+      // console.log(newArray);
+    }
+
+    console.log("NOWY ARRAY", newArray);
+    return await newArray;
+  };
+
+  const getTextures = async () => {
+    return await fetch("https://dog.ceo/api/breeds/image/random/7")
       .then((res) => res.json())
       .then((data) => {
-        console.log("FETCH _APP.TSX: ", data.message);
-        setTextures(data.message);
+        // console.log(data.message);
+        return data.message;
       });
   };
 
@@ -73,14 +102,21 @@ export default function App({ Component, pageProps }: AppProps) {
       document.documentElement.style.setProperty("--bg-color", "#000");
     } else if (path === "/about") {
       document.documentElement.style.setProperty("--bg-color", "#fff");
+    } else {
+      document.documentElement.style.setProperty("--bg-color", "#ff0000");
     }
   });
 
   useEffect(() => {
-    getTextures();
+    (async () => {
+      // console.log("DUPA");
+      const res = await getTextures();
+      // console.log("PO AWAIT", res);
+      const array = await checkTextures(res);
+      // console.log("OSTATECZNY ARRAY", array);
+      setTextures(array);
+    })();
   }, []);
-
-  const three = tunnel();
 
   return (
     <>
@@ -93,12 +129,17 @@ export default function App({ Component, pageProps }: AppProps) {
                 <Navbar />
                 <main className='relative overflow-hidden'>
                   <AnimatePresence mode='sync'>
-                    <Component key={path} {...pageProps} />
+                    <Component
+                      key={path}
+                      {...pageProps}
+                      urls={textures}
+                      loading={loading}
+                    />
                   </AnimatePresence>
                 </main>
                 <div>
                   <Gradient transition={path === "/"} />
-                  <Slider urls={textures} />
+                  <Slider urls={textures} setLoading={setLoading} />
                 </div>
               </div>
             </LazyMotion>

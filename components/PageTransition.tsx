@@ -46,9 +46,9 @@ function PageTransition({ children, bgColor, textColor }: PageTransitionTypes) {
   return (
     <motion.div
       ref={pageRef}
-      initial={!intro && path === "/about" && aboutInitial}
-      animate={!intro && path === "/about" && aboutAnimate}
-      exit={path === "/about" ? {} : aboutExit}
+      initial={!intro && path !== "/" && aboutInitial}
+      animate={!intro && path !== "/" && aboutAnimate}
+      exit={path !== "/" ? {} : aboutExit}
       transition={transition}
       onAnimationStart={startAnimation}
       onAnimationComplete={completeAnimation}

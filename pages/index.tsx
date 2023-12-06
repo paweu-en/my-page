@@ -14,11 +14,9 @@ import tunnel from "tunnel-rat";
 import TextReveal from "@/components/TextReveal";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-// import Slider from "@/components/Slider";
+import Skeleton from "@/components/Skeleton2";
 
-// type Projects = {
-//   projects: string[];
-// };
+type Props = { urls: string[]; loading: boolean };
 
 // const Slider = dynamic(() => import("../components/Slider"), {
 //   ssr: false,
@@ -43,27 +41,27 @@ import { usePathname } from "next/navigation";
 // }>;
 
 const testUrls = [
-  "Projekt_no.1",
-  "Projekt_no.2",
-  "Projekt_no.3",
-  "Projekt_no.4",
-  "Projekt_no.5",
-  "Projekt_no.6",
-  "Projekt_no.7",
+  "Projekt no. 1",
+  "Projekt no. 2",
+  "Projekt no. 3",
+  "Projekt no. 4",
+  "Projekt no. 5",
+  "Projekt no. 6",
+  "Projekt no. 7",
 ];
 
-function IndexPage() {
+function IndexPage({ urls, loading }: Props) {
   //   {
   //   projects,
   // }: InferGetStaticPropsType<typeof getStaticProps>
-  const three = tunnel();
   const [first, setFirst] = useState(true);
   useScrollToTop(750);
   const intro = useIntro();
   const path = usePathname();
+  const index = path === "/";
   const transition = path !== "/";
   const delay = intro ? 2.75 : first ? 0.75 : 0;
-  // console.log("DELAY", delay);
+  // console.log(urls.length, "INDEX URLS");
 
   useEffect(() => {
     setTimeout(() => setFirst(false), 2000);
@@ -71,6 +69,8 @@ function IndexPage() {
 
   return (
     <PageTransition bgColor='bg-black' textColor='text-white'>
+      <Skeleton index={index} loading={loading} />
+      {/* <Skeleton /> */}
       <motion.div
         // variants={indexContentAnimation(delay)}
         initial='init'
@@ -78,18 +78,6 @@ function IndexPage() {
         exit='fadeOut'
         // className={`flex flex-col items-center pt-[150px] pb-14 px-6 min-h-screen`}
       >
-        {/* <UseCanvas>
-          <Scene
-            urls={[
-              "./woman.jpg",
-              "./woman.jpg",
-              "./woman.jpg",
-              "./woman.jpg",
-              "./woman.jpg",
-            ]}
-            intro={intro}
-          />
-        </UseCanvas> */}
         <motion.div
           initial={transition && { x: 0, opacity: 1 }}
           animate={transition && { x: "-25%", opacity: 0.001 }}
@@ -98,7 +86,6 @@ function IndexPage() {
             ease: [1, 0, 0.8, 0.8],
           }}
           className='projects'>
-          {/* <div className='text-4xl element'>1</div> */}
           {testUrls.map((title, i) => {
             return (
               <div key={i} className='text-[9vw] font-voigante project'>
@@ -112,21 +99,7 @@ function IndexPage() {
             );
           })}
         </motion.div>
-
-        {/* <aside className='line'></aside> */}
-        {/* <aside className='tester'></aside> */}
-        {/* <aside className='info'> */}
-        {/* <div className='text-sm text-white info'>-</div>
-          <div className='text-sm text-white vhinfo'>-</div>
-          <div className='text-sm text-white html'>-</div> */}
-        {/* <div className='text-sm text-white window'>-</div> */}
-        {/* <div className='text-sm text-white aspect'>-</div>
-          <div className='text-sm text-white vheight'>-</div> */}
-        {/* <div className='scroll'></div> */}
-        {/* </aside> */}
       </motion.div>
-      {/* <aside className='left'></aside>
-      <aside className='right'></aside> */}
     </PageTransition>
   );
 }

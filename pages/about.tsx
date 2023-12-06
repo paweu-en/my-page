@@ -7,6 +7,7 @@ import { useHeight } from "@/contexts/HeightContext";
 import Image from "next/image";
 import TextReveal from "@/components/TextReveal";
 import { useState } from "react";
+import me from "@/public/me.jpg";
 
 function AboutPage() {
   const [isHovered, setHovered] = useState(false);
@@ -101,10 +102,11 @@ function AboutPage() {
             </motion.p>
           </div>
           <Image
-            src='/me.jpg'
+            src={me}
             alt='My picture'
             width={1000}
             height={1500}
+            placeholder='blur'
             // className='justify-self-end w-full row-span-2 min-[500px]:w-2/3 md:w-5/6 md:justify-self-start'
             className='col-start-2 sm:w-4/6 lg:w-full lg:py-20 lg:pl-20 justify-self-end'
           />

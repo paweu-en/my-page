@@ -2,6 +2,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { navbarAnimation } from "@/utils/animations";
+import SecretButton from "./SecretButton";
 
 const navigation = [
   { name: "Index", path: "/" },
@@ -33,6 +34,7 @@ const Navbar = () => {
           </Link>
         ))}
       </nav>
+      <SecretButton />
     </motion.div>
   );
 };

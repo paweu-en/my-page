@@ -1,5 +1,5 @@
 import { Canvas } from "@react-three/fiber";
-import { Suspense } from "react";
+import { Dispatch, SetStateAction, Suspense, useEffect } from "react";
 import Scene from "./Scene";
 import { PerspectiveCamera } from "@react-three/drei";
 import { m as motion } from "framer-motion";
@@ -8,13 +8,19 @@ import { useIntro } from "@/contexts/IntroContext";
 
 type Props = {
   urls: string[];
+  setLoading: Dispatch<SetStateAction<boolean>>;
 };
 
-const Slider = ({ urls }: Props) => {
+const Slider = ({ urls, setLoading }: Props) => {
   const intro = useIntro();
   const delay = intro ? 1 : 0.65;
   const path = usePathname();
   const isIndex = path === "/";
+  console.log(urls.length, "URLS SLIDER");
+
+  useEffect(() => {
+    if (urls.length) setLoading(false);
+  }, [urls]);
 
   function handleHideCanvas() {
     const element = document.querySelector(".three");
