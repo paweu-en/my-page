@@ -139,15 +139,16 @@ export default function App({ Component, pageProps }: AppProps) {
               <div
                 className={`${inter500.variable} ${voigante.variable} font-inter antialiased`}>
                 <Navbar />
-                <AnimatePresence mode='sync'>
-                  <main className='relative overflow-hidden' key={path}>
+                <main className='relative overflow-hidden'>
+                  <AnimatePresence mode='sync'>
                     <Component
+                      key={path}
                       {...pageProps}
                       // urls={textures}
-                      // loading={loading}
+                      loading={loading}
                     />
-                  </main>
-                </AnimatePresence>
+                  </AnimatePresence>
+                </main>
                 <div>
                   <Gradient transition={path === "/"} />
                   <Slider urls={textures} setLoading={setLoading} />
