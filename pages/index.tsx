@@ -62,6 +62,7 @@ function IndexPage({ urls, loading }: Props) {
   const transition = path !== "/";
   const delay = intro ? 2.75 : first ? 0.75 : 0;
   // console.log(urls.length, "INDEX URLS");
+  console.log(first);
 
   useEffect(() => {
     setTimeout(() => setFirst(false), 2000);

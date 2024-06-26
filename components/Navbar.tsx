@@ -34,7 +34,7 @@ const Navbar = () => {
           </Link>
         ))}
       </nav>
-      {/* <SecretButton /> */}
+      <SecretButton />
     </motion.div>
   );
 };
