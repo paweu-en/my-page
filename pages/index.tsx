@@ -41,13 +41,13 @@ type Props = { urls: string[]; loading: boolean };
 // }>;
 
 const testUrls = [
-  "Projekt no. 1",
-  "Projekt no. 2",
-  "Projekt no. 3",
-  "Projekt no. 4",
-  "Projekt no. 5",
-  "Projekt no. 6",
-  "Projekt no. 7",
+  "Project no. 1",
+  "Project no. 2",
+  "Project no. 3",
+  "Project no. 4",
+  "Project no. 5",
+  "Project no. 6",
+  "Project no. 7",
 ];
 
 function IndexPage({ urls, loading }: Props) {
