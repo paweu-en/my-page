@@ -59,6 +59,16 @@ const Slider = dynamic(() => import("../components/Slider"), {
   // ),
 });
 
+const staticTextures: string[] = [
+  "./project_1.jpg",
+  "./project_2.png",
+  "./project_3.jpg",
+  "./project_4.jpg",
+  "./project_5.jpg",
+  "./project_6.jpg",
+  "./project_7.jpg",
+];
+
 export default function App({ Component, pageProps }: AppProps) {
   const [textures, setTextures] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
@@ -107,16 +117,18 @@ export default function App({ Component, pageProps }: AppProps) {
     }
   });
 
-  useEffect(() => {
-    (async () => {
-      // console.log("DUPA");
-      const res = await getTextures();
-      // console.log("PO AWAIT", res);
-      const array = await checkTextures(res);
-      // console.log("OSTATECZNY ARRAY", array);
-      setTextures(array);
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     // console.log("DUPA");
+  //     const res = await getTextures();
+  //     // console.log("PO AWAIT", res);
+  //     const array = await checkTextures(res);
+  //     // console.log("OSTATECZNY ARRAY", array);
+  //     setTextures(array);
+  //   })();
+  // }, []);
+
+  useEffect(() => setTextures(staticTextures));
 
   return (
     <>
